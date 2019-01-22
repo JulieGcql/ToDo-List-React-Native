@@ -20,10 +20,8 @@ export default class App extends React.Component {
     this.setState({newTodoItem: e})
   }
 
-// Mettre à jour avec sa propre adresse IP pour récupérer les données du back
-
   getTodo = () => {
-    Axios.get('http://192.168.1.84:3000/todos')
+    Axios.get('https://todo-list-julie.herokuapp.com/todos')
     .then((res) => {
       this.setState({todos: res.data})
     })
@@ -31,7 +29,7 @@ export default class App extends React.Component {
   }
 
   deleteTodo = (id) => {
-    Axios.delete(`http://192.168.1.84:3000/todos/${id}`)
+    Axios.delete(`https://todo-list-julie.herokuapp.com/todos/${id}`)
     .then((res) => {
       this.getTodo()
     })
@@ -40,7 +38,7 @@ export default class App extends React.Component {
 
   addTodo = (e) => {
     e.preventDefault()
-    Axios.post('http://192.168.1.84:3000/todos', {title: this.state.newTodoItem})
+    Axios.post('https://todo-list-julie.herokuapp.com/todos', {title: this.state.newTodoItem})
     .then((res) => {
       this.setState({newTodoItem:""})
       this.getTodo()
